@@ -32,4 +32,13 @@ class appController extends Controller
 
         return view('apresentar_todos', compact('cliente','telefones'));
     }
+
+    public function proprietario($numero)
+    {
+        //relação INVERSA (N-1)
+        $telefone = telefone::where('numero', $numero)->get()->first();
+        $cliente = $telefone->proprietario;
+
+        return $telefone;
+    }
 }
