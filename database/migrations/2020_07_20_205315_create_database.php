@@ -20,6 +20,23 @@ class CreateDatabase extends Migration
         });
 
         //======================================================
+        // Telefones
+        //======================================================
+        Schema::create('telefones', function (Blueprint $table) {
+            $table->increments('id_telefone');
+            $table->unsignedInteger('id_cliente');
+            $table->string('numero');
+            $table->timestamps();
+
+            //Criação da Relação (chave estrangeira)
+            $table->foreign('id_cliente')
+                ->references('id_cliente')
+                ->on('clientes')
+                ->onDelete('cascade');
+        });
+
+
+        //======================================================
         // Vendas
         //======================================================
         Schema::create('vendas', function (Blueprint $table) {
