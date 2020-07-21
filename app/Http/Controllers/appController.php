@@ -36,9 +36,21 @@ class appController extends Controller
     public function proprietario($numero)
     {
         //relação INVERSA (N-1)
-        $telefone = telefone::where('numero', $numero)->get()->first();
-        $cliente = $telefone->proprietario;
+        // $telefone = telefone::where('numero', $numero)->first();
+        // $cliente = $telefone->proprietario;
+        // return $cliente;
 
-        return $telefone;
+        //Solução pra sem o withDefault();
+        $telefone = telefone::where('numero', $numero)->get()->first();
+        if($telefone != null){
+            $cliente = $telefone->proprietario;
+            return $cliente;
+        }else{
+            // $erro = ['erro'];
+            // return view('view_do_erro', compact('erro'));
+            return 'Telefone não existe';
+        }
+
+
     }
 }
