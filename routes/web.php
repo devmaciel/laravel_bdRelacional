@@ -26,3 +26,10 @@ Route::get('/apresentar_compra/{id}', 'geral@apresentarCompra');
 
 //pesquisar cliente pelo nome (ou parte dele)
 Route::get('/pesquisar_cliente/{pesquisa}', 'geral@pesquisarCliente');
+
+//pesquisar cliente pelo nome ou email (ou parte dele)
+Route::get('/pesquisar_cliente_nome_email/{pesquisa}', 'geral@pesquisarClienteNomeEmail');
+
+//total clientes|compras
+Route::get('/total_clientes', 'geral@totalClientes');
+Route::get('/total_compras', 'geral@totalCompras');

@@ -53,4 +53,30 @@ class geral extends Controller
         $clientes = clientes::where('nome', 'like', '%'.$pesquisa.'%')->get();
         return $clientes;
     }
+
+    //================================================
+    public function totalClientes()
+    {
+        //retorna o número total de clientes registrados na base de dados
+        $total = clientes::all()->count();
+        return 'Número total de clientes: '.$total;
+    }
+
+     //================================================
+     public function totalCompras()
+     {
+         //retorn o número total de compras
+         $total = compras::all();
+         return 'Número total de compras '.$total->count();
+     }
+
+     //================================================
+     public function pesquisarClienteNomeEmail($pesquisa)
+     {
+         //pesquisar os cliente cujo nome e/ou email contenham o texto da pesquisa
+         $clientes = clientes::where('nome', 'like', '%'.$pesquisa.'%')
+                            ->orWhere('email', 'like', '%'.$pesquisa.'%')
+                            ->get();
+         return $clientes;
+     }
 }
