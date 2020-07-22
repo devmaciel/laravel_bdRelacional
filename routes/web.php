@@ -19,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'geral@index');
 Route::get('/apresentar_lista_clientes', 'geral@apresentarListaCliente');
+Route::get('/apresentar_lista_compras', 'geral@apresentarListaCompras');
+
+Route::get('/apresentar_cliente/{id}', 'geral@apresentarCliente');
+Route::get('/apresentar_compra/{id}', 'geral@apresentarCompra');
+
+//pesquisar cliente pelo nome (ou parte dele)
+Route::get('/pesquisar_cliente/{pesquisa}', 'geral@pesquisarCliente');
