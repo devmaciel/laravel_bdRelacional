@@ -20,30 +20,13 @@ class CreateDatabase extends Migration
         });
 
         //======================================================
-        // Telefones
+        // Compras
         //======================================================
-        Schema::create('telefones', function (Blueprint $table) {
-            $table->increments('id_telefone');
-            $table->unsignedInteger('id_cliente');
-            $table->string('numero');
-            $table->timestamps();
-
-            //Criação da Relação (chave estrangeira)
-            $table->foreign('id_cliente')
-                ->references('id_cliente')
-                ->on('clientes')
-                ->onDelete('cascade');
-        });
-
-
-        //======================================================
-        // Vendas
-        //======================================================
-        Schema::create('vendas', function (Blueprint $table) {
-            $table->increments('id_venda');
+        Schema::create('compras', function (Blueprint $table) {
+            $table->increments('id_compra');
             $table->unsignedInteger('id_cliente');
             $table->string('produto');
-            $table->string('preco', 2);
+            $table->integer('quantidade');
             $table->timestamps();
 
             //Criação da Relação (chave estrangeira)
@@ -52,11 +35,30 @@ class CreateDatabase extends Migration
                 ->on('clientes')
                 ->onDelete('cascade');
         });
+
+
+    //     //======================================================
+    //     // Vendas
+    //     //======================================================
+    //     Schema::create('vendas', function (Blueprint $table) {
+    //         $table->increments('id_venda');
+    //         $table->unsignedInteger('id_cliente');
+    //         $table->string('produto');
+    //         $table->string('preco', 2);
+    //         $table->timestamps();
+
+    //         //Criação da Relação (chave estrangeira)
+    //         $table->foreign('id_cliente')
+    //             ->references('id_cliente')
+    //             ->on('clientes')
+    //             ->onDelete('cascade');
+    //     });
     }
 
     //---------------------------------------------------------------
     public function down()
     {
-        Schema::dropIfExists('teste');
+        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('compras');
     }
 }

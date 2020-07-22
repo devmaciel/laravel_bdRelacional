@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{id}', 'appController@index');
-Route::get('/todos/{id}', 'appController@todos');
-Route::get('/proprietario/{numero}', 'appController@proprietario');
+// Route::get('/{id}', 'appController@index');
+// Route::get('/todos/{id}', 'appController@todos');
+// Route::get('/proprietario/{numero}', 'appController@proprietario');
+
+Route::get('/', 'geral@index');
+Route::get('/apresentar_lista_clientes', 'geral@apresentarListaCliente');
