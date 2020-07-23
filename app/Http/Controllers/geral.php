@@ -79,4 +79,29 @@ class geral extends Controller
                             ->get();
          return $clientes;
      }
+
+     //================================================
+     public function mostrarQuantidadeTotal()
+     {
+        //mostrar a quantidade total de produtos vendidos em todas as vendas
+        $total = compras::all()->sum('quantidade');
+        return 'Quantidade total de produtos vendidos: '.$total;
+     }
+
+    //================================================
+    public function mostrarMediaQuantidadeProdutosPorVenda()
+    {
+        //apresenta a média de produtos adquiridos por cada compra
+        $media = compras::all()->avg('quantidade');
+        return 'Média de produtos vendidos por cada compra: '.$media;
+    }
+
+    //==========================================================
+    public function mostrarQuantidadeMaiorCompra()
+    {
+        //apresentar a maior quantidade registrada numa compra
+        $max = compras::all()->max('quantidade');
+        return 'Quantidade máxima registrada: '.$max;
+    }
 }
+

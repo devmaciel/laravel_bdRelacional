@@ -33,3 +33,9 @@ Route::get('/pesquisar_cliente_nome_email/{pesquisa}', 'geral@pesquisarClienteNo
 //total clientes|compras
 Route::get('/total_clientes', 'geral@totalClientes');
 Route::get('/total_compras', 'geral@totalCompras');
+
+//total de vendas sum(quantidade), Media, Máxima
+Route::get('/mostrar_quantidade_total', 'geral@mostrarQuantidadeTotal');
+Route::get('/mostrar_media_de_produtos', 'geral@mostrarMediaQuantidadeProdutosPorVenda');
+Route::get('/mostrar_max_de_produtos', 'geral@mostrarQuantidadeMaiorCompra');
+
