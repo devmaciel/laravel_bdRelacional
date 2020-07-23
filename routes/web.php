@@ -38,4 +38,5 @@ Route::get('/total_compras', 'geral@totalCompras');
 Route::get('/mostrar_quantidade_total', 'geral@mostrarQuantidadeTotal');
 Route::get('/mostrar_media_de_produtos', 'geral@mostrarMediaQuantidadeProdutosPorVenda');
 Route::get('/mostrar_max_de_produtos', 'geral@mostrarQuantidadeMaiorCompra');
+Route::get('/mostrar_max_de_produtos_organizado', 'geral@mostrarDadosCompraMaior');
 

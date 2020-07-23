@@ -103,5 +103,16 @@ class geral extends Controller
         $max = compras::all()->max('quantidade');
         return 'Quantidade máxima registrada: '.$max;
     }
+
+    //==========================================================
+    public function mostrarDadosCompraMaior()
+    {
+        $compras = compras::orderBy('quantidade', 'desc')->get();
+        $compra_maior = $compras->first();
+        // $cliente = $compra_maior->cliente();
+        $cliente = clientes::find($compra_maior->id_cliente);
+        // return $compras;
+        return $compra_maior->quantidade.' '.$compra_maior->produto.' adquirida por '.$cliente->nome;
+    }
 }
 
