@@ -53,4 +53,17 @@ class appController extends Controller
 
 
     }
+
+    //-------------------------------
+    //AULA102+
+    //---------------------------------------
+    public function funcionarios()
+    {
+
+    }
+
+    public function funcoes()
+    {
+
+    }
 }

@@ -53,12 +53,52 @@ class CreateDatabase extends Migration
     //             ->on('clientes')
     //             ->onDelete('cascade');
     //     });
-    }
 
+
+        //aula102
+        //funcionarios
+        Schema::create('funcionarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->timestamps();
+        });
+
+        //funcoes;cargo
+        Schema::create('funcoes', function (Blueprint $table) {
+            $table->id();
+            $table->string('funcao');
+            $table->timestamps();
+        });
+
+        //ligacao entre funcionarios e funcoes
+        Schema::create('funcionarios_funcoes', function (Blueprint $table) {
+
+            //relação com a tabela funcionários
+            $table->integer('id_funcionario')->unsigned();
+
+            $table->foreign('id_funcionario')
+                    ->references('id')
+                    ->on('funcionarios')
+                    ->onDelete('cascade');
+
+            $table->foreign('id_funcao')
+                    ->references('id')
+                    ->on('funcoes')
+                    ->onDelete('cascade');
+
+            $table->timestamps();
+        });
+
+    }
     //---------------------------------------------------------------
     public function down()
     {
         Schema::dropIfExists('clientes');
         Schema::dropIfExists('compras');
+
+        //aula102
+        Schema::dropIfExists('funcionarios');
+        Schema::dropIfExists('funcoes');
+        Schema::dropIfExists('funcionarios_funcoes');
     }
 }
