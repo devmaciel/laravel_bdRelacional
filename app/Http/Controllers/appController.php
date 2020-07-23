@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\cliente;
 use App\telefone;
 
+use App\funcionarios;
+use App\funcoes;
+
 class appController extends Controller
 {
     public function index($id)
@@ -57,13 +60,38 @@ class appController extends Controller
     //-------------------------------
     //AULA102+
     //---------------------------------------
-    public function funcionarios()
+    public function funcionarios($id)
     {
+        $funcionario = funcionarios::find($id);
+        $funcoes = $funcionario->funcoes; //funcoes é o método do model
+        // return $funcionario.'<br>'.$funcoes;
 
+        //apresentar os dados
+        echo '<p>'.$funcionario->nome.'</p>'; //nome do funcionario
+
+        //apresentar todas funcoes do usuário
+        echo '<ul>';
+        foreach ($funcoes as $f){
+            echo '<li>'.$f->funcao.'</li>';
+        }
+        echo '</ul>';
     }
 
-    public function funcoes()
+    public function funcoes($id)
     {
+        // admin\coordenador\operario
+        $funcao = funcoes::find($id);
+        $funcionarios = $funcao->funcionarios; //método funcionarios
+
+        //apresentar os dados
+        echo '<p>'.$funcao->funcao.'</p>'; //variavao funcao, com o attr funcao
+
+        //pega nome do usuario e de acrodo com a funcao, inverso
+        echo '<ul>';
+        foreach ($funcionarios as $f){
+            echo '<li>'.$f->nome.'</li>';
+        }
+        echo '</ul>';
 
     }
 }

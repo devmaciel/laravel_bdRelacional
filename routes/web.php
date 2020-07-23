@@ -40,3 +40,7 @@ Route::get('/mostrar_media_de_produtos', 'geral@mostrarMediaQuantidadeProdutosPo
 Route::get('/mostrar_max_de_produtos', 'geral@mostrarQuantidadeMaiorCompra');
 Route::get('/mostrar_max_de_produtos_organizado', 'geral@mostrarDadosCompraMaior');
 
+
+//aula 103
+Route::get('/funcionarios/{id}', 'appController@funcionarios');
+Route::get('/funcoes/{id}', 'appController@funcoes');
